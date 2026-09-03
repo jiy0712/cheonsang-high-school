@@ -19,7 +19,7 @@ export default function NewsPage() {
                         soureNote="천상고등학교 공식 홈페이지 공지사항 (실시간 제공)"
                     />
                 ),
-                letter: <PostList category="letter" soureNote="가정통신문 />,
+                letter: <PostList category="letter" soureNote="가정통신문" />,
                 album: <AlbumGallery />,
             }}
         />

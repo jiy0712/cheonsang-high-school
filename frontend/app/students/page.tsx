@@ -4,7 +4,7 @@ import {ScheduleList} from "@/components/schedule-list";
 import {NAV_MENU} from "@/lib/menu";
 
 //학생마당 메뉴 소개글
-const menu = NAV_MENU.find((m) => menu.href === "/students");
+const menu = NAV_MENU.find((m) => m.href === "/students");
 
 export default function StudentsPage() {
     return (
