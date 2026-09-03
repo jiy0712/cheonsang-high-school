@@ -173,7 +173,7 @@ export class NoticeScraperService {
 
     return results;
   }
-ㅔ
+
   private parseAlbum(html: string, limit: number): AlbumItem[] {
     const $ = cheerio.load(html);
 

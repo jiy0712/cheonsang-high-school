@@ -17,7 +17,7 @@ import { RolesGuard } from '../auth/roles.guard';
 import { Roles } from '../auth/roles.decorator';
 import { CurrentUser } from '../auth/current-user.decorator';
 import { UserRole } from '../users/user.entity';
-import { AuthUser } from '../auth/jwt.strategy';
+import type { AuthUser } from '../auth/jwt.strategy';
 
 @Controller('boards/posts')
 export class BoardsController {
