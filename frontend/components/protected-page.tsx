@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Home, ChevronRight, Lock, LogIn } from 'lucide-react'
@@ -13,16 +14,18 @@ import type { MenuItem } from '@/lib/menu'
 export function ProtectedPage({
   menu,
   description,
+  sections,
 }: {
   menu: MenuItem
   description: string
+  sections?: Record<string, ReactNode>
 }) {
   const { user, loading } = useAuth()
   const pathname = usePathname()
 
   // 로그인 상태이면 원래 페이지를 그대로 보여줍니다.
   if (user) {
-    return <PageShell menu={menu} description={description} />
+    return <PageShell menu={menu} description={description} sections={sections} />
   }
 
   return (

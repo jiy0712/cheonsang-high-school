@@ -38,6 +38,27 @@ export class NoticeScraperService {
   private get proxyBase(): string | null {
     return process.env.SCHOOL_PROXY_BASE ?? null;
   }
+  private get schoolHome(): string {
+    return (
+      process.env.SCHOOL_HOME_BASE ?? 'https://school.use.go.kr/cheonsang-h'
+    );
+  }
+
+  async fetchBoard(code: string, limit = 15): Promise<Post[]> {
+    const safe = (code ?? '').trim().replace(/[^A-Za-z0-9/_-]/g, '');
+    if (!safe) return [];
+
+    const url = safe.startsWith('http') ? safe : `${this.schoolHome}/${safe}`;
+    const html = await this.fetchHtml(url);
+    if (!html) return [];
+
+    try {
+      return this.parse(html, limit, PostCategory.NEWS, '게시판');
+    } catch (err) {
+      this.logger.warn(`게시판(${safe}) 파싱 실패: ${(err as Error).message}`);
+      return [];
+    }
+  }
 
   async fetchNotices(limit = 20): Promise<Post[]> {
     const html = await this.fetchHtml(this.noticeUrl);

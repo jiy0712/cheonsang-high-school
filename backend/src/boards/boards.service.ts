@@ -106,4 +106,8 @@ export class BoardsService {
   async listAlbum(limit = 12) {
     return this.noticeScraper.fetchAlbum(limit);
   }
+
+  async listExternalBoard(code: string, limit = 15) {
+    return this.noticeScraper.fetchBoard(code, limit);
+  }
 }

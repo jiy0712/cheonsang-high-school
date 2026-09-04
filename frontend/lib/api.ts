@@ -157,6 +157,13 @@ export function getAlbum(limit = 12) {
   return request<AlbumItem[]>(`/boards/posts/album?limit=${limit}`)
 }
 
+/** 학교 홈페이지 임의 게시판(메뉴 코드)의 실시간 스크래핑 목록. */
+export function getExternalBoard(code: string, limit = 15) {
+  return request<Post[]>(
+    `/boards/posts/external?code=${encodeURIComponent(code)}&limit=${limit}`,
+  )
+}
+
 /** 통합검색: 제목·내용에 검색어가 포함된 게시글을 카테고리 구분 없이 조회합니다. */
 export function searchPosts(q: string, limit = 30, page = 1) {
   return request<Paginated<Post>>(

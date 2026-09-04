@@ -1,4 +1,5 @@
 import {PageShell} from "@/components/page-shell";
+import { ExternalBoard } from "@/components/external-board";
 import {NAV_MENU} from "@/lib/menu";
 
 //학교생활 메뉴 소개글
@@ -9,6 +10,12 @@ export default function LifePage() {
         <PageShell
             menu={menu}
             description="학교 규칙, 학생 자치, 상담실, 보건실 등 학교생활 전반을 소개합니다."
+            sections={{
+                rules: <ExternalBoard sectionKey="rules" />,
+                "student-council": <ExternalBoard sectionKey="student-council" />,
+                counseling: <ExternalBoard sectionKey="counseling" />,
+                health: <ExternalBoard sectionKey="health" />,
+            }}
         />
     )
 }

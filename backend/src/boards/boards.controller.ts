@@ -33,6 +33,14 @@ export class BoardsController {
     return this.boardsService.listAlbum(limit ? Number(limit) : 12);
   }
 
+  @Get('external')
+  external(@Query('code') code: string, @Query('limit') limit?: string) {
+    return this.boardsService.listExternalBoard(
+      code,
+      limit ? Number(limit) : 15,
+    );
+  }
+
   @Get(':id')
   get(@Param('id', ParseIntPipe) id: number) {
     return this.boardsService.get(id);
